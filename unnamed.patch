@@ -1,0 +1,645 @@
+Index: ED/lista_colecoes.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- ED/lista_colecoes.py	(revision 0ece8f6c7f104b5ca3d49a4189512f33d1ff53b4)
++++ ED/lista_colecoes.py	(date 1585269645253)
+@@ -1,0 +1,5 @@
++def imprimeLista(no):
++    while no:
++        print(no, end=" ")
++        no = no.proximo
++    print()
+Index: PycharmProjects/Database/.idea/Database.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- PycharmProjects/Database/.idea/Database.iml	(revision 0ece8f6c7f104b5ca3d49a4189512f33d1ff53b4)
++++ PycharmProjects/Database/.idea/Database.iml	(date 1584534362000)
+@@ -2,7 +2,7 @@
+ <module type="PYTHON_MODULE" version="4">
+   <component name="NewModuleRootManager">
+     <content url="file://$MODULE_DIR$" />
+-    <orderEntry type="jdk" jdkName="Python 3.8 (django_project)" jdkType="Python SDK" />
++    <orderEntry type="jdk" jdkName="Python 3.7" jdkType="Python SDK" />
+     <orderEntry type="sourceFolder" forTests="false" />
+   </component>
+ </module>
+\ No newline at end of file
+Index: ED/Lista_Recorrencia.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- ED/Lista_Recorrencia.py	(revision 0ece8f6c7f104b5ca3d49a4189512f33d1ff53b4)
++++ ED/Lista_Recorrencia.py	(date 1585455689473)
+@@ -1,0 +1,18 @@
++"""É natural expressar muitas operações de listas utilizando métodos recorrentes.
++    Por exemplo,o seguinte é um algoritmo recorrente para imprimir uma lista de trás para frente.
++    1. Separe a lista em dois pedaços: o primeiro nó (chamado a cabeça); e o resto (chamado o rabo).
++    2. Imprima o rabo de trás para frente.
++    3. Imprima a cabeça.
++    Logicamente,o Passo 2, a chamada recorrente,assume que nós temos um modo de imprimir a lista de trás para frente.
++    Mas se nós assumimos que a chamada recorrente funciona – o passo de fé – então podemos nos convencer de que o algoritmo funciona.
++    Tudo o que precisamos são um caso base e um modo de provar que para qualquer lista, nós iremos, ao ﬁnal,chegar no caso base.
++    Dada a deﬁnição recorrente de uma lista, um caso base natural é a lista vazia, representada por None:
++"""
++
++def imprimeDeTrasParaFentre(lista):
++    if lista == None:
++        return
++    cabeca = lista
++    rabo = lista.proximo
++    imprimeDeTrasParaFentre(rabo)
++    print(cabeca, end='')
+Index: ED/lista_infinitas.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- ED/lista_infinitas.py	(revision 0ece8f6c7f104b5ca3d49a4189512f33d1ff53b4)
++++ ED/lista_infinitas.py	(date 1585009410656)
+@@ -1,0 +1,16 @@
++"""
++    Se nós invocarmos imprime Lista nesta lista, ele ﬁcará em laço para sempre.
++    Se nós invocarmos imprimeDeTrasParaFrente, ele recorrerá infinitamente.
++    Este tipo de comportamento torna as listas inﬁnitas difíceis de se lidar.
++
++    A despeito disto, elas ocasionalmente são úteis.
++    Por exemplo, podemos representar um número como uma lista de dígitos
++    e usar uma lista inﬁnita para representar uma fração repetente.
++
++    Mesmo assim, é problemático que não possamos provar que imprimeLista e imprimeDeTrasParaFrente terminem.
++    O melhor que podemos fazer é a aﬁrmação hipotética, “Se a lista não contém laços, então este método terminará.
++    ” Este tipo de hipótese é chamado uma pré-condição.
++     Ele impõe uma limitação sobre um dos parâmetros e descreve o comportamento do método se a limitação é satisfeita.
++     Você verá mais exemplos em breve.
++
++"""
+Index: PycharmProjects/InitPython/.idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- PycharmProjects/InitPython/.idea/misc.xml	(revision 0ece8f6c7f104b5ca3d49a4189512f33d1ff53b4)
++++ PycharmProjects/InitPython/.idea/misc.xml	(date 1585052221000)
+@@ -1,4 +1,4 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
+-  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.8 (django_project)" project-jdk-type="Python SDK" />
++  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.7" project-jdk-type="Python SDK" />
+ </project>
+\ No newline at end of file
+Index: ED/modificando_listas.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- ED/modificando_listas.py	(revision 0ece8f6c7f104b5ca3d49a4189512f33d1ff53b4)
++++ ED/modificando_listas.py	(date 1585268391888)
+@@ -1,0 +1,10 @@
++def removeSegundo(lista):
++    if lista == None:
++        return
++    primeiro = lista
++    segundo = lista.proximo
++    # faz o primeiro no referir ao terceiro
++    primeiro.proximo = segundo.proximo
++    # separa o segundo no do resto da lista
++    segundo.proximo = None
++    return segundo
+Index: ED/Node.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- ED/Node.py	(revision 0ece8f6c7f104b5ca3d49a4189512f33d1ff53b4)
++++ ED/Node.py	(date 1585277220040)
+@@ -1,0 +1,60 @@
++import lista_colecoes
++# from Lista_Recorrencia import imprimeDeTrasParaFentre
++from modificando_listas import removeSegundo as remove
++
++
++# Lista ligada
++class No:
++    def __init__(self, carga=None, proximo=None):
++        self.carga = carga
++        self.proximo = proximo
++
++    def __str__(self):
++        return str(self.carga)
++
++    def imprimeDeTrasParaFrente(self):
++        if self.proximo != None:
++            rabo = self.proximo
++            rabo.imprimeDeTrasParaFrente()
++        print(self.carga, end='')
++
++# def imprimeDeTrasParaFrenteLegal(lista):
++#     print("[", end="")
++#     if lista != None:
++#         cabeca = lista
++#         rabo = lista.proximo
++#         ListaLigada.imprimeDeTrasParaFrente(rabo)
++#         print(cabeca, end=" ")
++#     print("]", end="")
++
++
++class ListaLigada:
++    def __init__(self):
++        self.comprimento = 0
++        self.cabeca = None
++
++    def imprimeDeTrasParaFrente(self):
++        print("[", end="")
++        if self.cabeca != None:
++            self.cabeca.impreDeTrasParaFrente()
++        print("]", end="")
++
++    def adicionaPrimeiro(self, carga):
++        no = No(carga)
++        no.proximo = self.cabeca
++        self.cabeca = no
++        self.comprimento = self.comprimento + 1
++
++
++no = No()
++no1 = No(1)
++no2 = No(2)
++no3 = No(3)
++no1.proximo = no2
++no2.proximo = no3
++lista_colecoes.imprimeLista(no1)
++No.imprimeDeTrasParaFrente(no1)
++removido = remove(no1)
++lista_colecoes.imprimeLista(removido)
++lista_colecoes.imprimeLista(no1)
++ListaLigada.imprimeDeTrasParaFrente(no1)
+Index: PycharmProjects/InitPython/cleanup_actions.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- PycharmProjects/InitPython/cleanup_actions.py	(revision 0ece8f6c7f104b5ca3d49a4189512f33d1ff53b4)
++++ PycharmProjects/InitPython/cleanup_actions.py	(date 1584619244000)
+@@ -1,0 +1,26 @@
++import unittest
++
++
++# class DataTableTest(unittest.TestCase):
++#     def SetUp(self):
++#         self.out_file = open()
++#
++#     def test_add_column(self):
++#         pass
++#
++#     def tearDown(self):
++#         print("tearDown")
++
++class DataTableTest(unittest.TestCase):
++    def SetUp(self):
++        self.addCleanup(self.my_cleanup, ('cleanup executado'))
++        self.out_file = open()
++
++    def my_cleanup(self, msg):
++        print(msg)
++
++    def test_add_column(self):
++        pass
++
++    def tearDown(self):
++        print('Nunca executado')
+Index: PycharmProjects/InitPython/setup_teardown.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- PycharmProjects/InitPython/setup_teardown.py	(revision 0ece8f6c7f104b5ca3d49a4189512f33d1ff53b4)
++++ PycharmProjects/InitPython/setup_teardown.py	(date 1584558596000)
+@@ -1,10 +1,30 @@
++"""Um princípio importante em testes é o de isolamento. Deve
++    existir um isolamento entre os ambientes de testes, em cada
++    método de teste. Ou seja, as mudanças de ambiente - como criação
++    de variáveis, alterações em objetos importados e outras - não devem
++    ser vistas por outro método de teste que não seja o qual as realizou."""
++
++# Método Setup e TearDown
++from domain import DataTable
+ import unittest
+ 
+ 
+-class MyTestCase(unittest.TestCase):
+-    def test_something(self):
+-        self.assertEqual(True, False)
++class DataTableTest(unittest.TestCase):
++    def SetUp(self):
++        self.table = DataTable('A')
++
++    def test_add_column(self):
++        self.assertEqual(0, len(self.table._columns))
++
++        self.table.add_column('BId', 'bigint')
++        self.assertEqual(1, len(self.table._columns))
++
++        self.table.add_column('value', 'numeric')
++        self.assertEqual(2, len(self.table._columns))
+ 
++        self.table.add_column('desc', 'varchar')
++        self.assertEqual(3, len(self.table._columns))
+ 
+-if __name__ == '__main__':
+-    unittest.main()
++    def test_add_column_invalid_type(self):
++        self.assertRaises(Exception, self.table.add_column, ('col', 'invalid'))
++
+Index: ProjectUni/ListaEncadead.py
+===================================================================
+--- ProjectUni/ListaEncadead.py	(revision 0ece8f6c7f104b5ca3d49a4189512f33d1ff53b4)
++++ ProjectUni/Lista/ListaEncadead.py	(date 1585462143107)
+Index: PycharmProjects/InitPython/.idea/InitPython.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- PycharmProjects/InitPython/.idea/InitPython.iml	(revision 0ece8f6c7f104b5ca3d49a4189512f33d1ff53b4)
++++ PycharmProjects/InitPython/.idea/InitPython.iml	(date 1585052221000)
+@@ -2,7 +2,7 @@
+ <module type="PYTHON_MODULE" version="4">
+   <component name="NewModuleRootManager">
+     <content url="file://$MODULE_DIR$" />
+-    <orderEntry type="jdk" jdkName="Python 3.8 (django_project)" jdkType="Python SDK" />
++    <orderEntry type="jdk" jdkName="Python 3.7" jdkType="Python SDK" />
+     <orderEntry type="sourceFolder" forTests="false" />
+   </component>
+ </module>
+\ No newline at end of file
+Index: ProjectUni/Fila/Filas.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- ProjectUni/Fila/Filas.py	(date 1586128882253)
++++ ProjectUni/Fila/Filas.py	(date 1586128882253)
+@@ -0,0 +1,44 @@
++class Queue:
++    def __init__(self):
++        self.queue = []
++        self.len_queue = 0
++
++    def empty(self):
++        if self.len_queue == 0:
++            return True
++        return False
++
++    def insert(self, i):
++        self.queue.append(i)
++        self.len_queue += 1
++
++    def pop(self):
++        if self.empty():
++            self.queue.pop(0)
++            self.len_queue -= 1
++
++    def length(self):
++        return self.len_queue
++
++    def front(self):
++        if not self.empty():
++            return self.queue[0]
++        return None
++
++    def show(self):
++        if self.empty():
++            return self.queue[0]
++        else:
++            return print(self.queue)
++
++
++q = Queue()
++q.insert(10)
++q.insert(4)
++q.insert(6)
++q.insert(8)
++q.insert(3)
++q.pop()
++print(q.front())
++q.show()
++
+Index: ProjectUni/Fila/Queue.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- ProjectUni/Fila/Queue.py	(date 1586047908584)
++++ ProjectUni/Fila/Queue.py	(date 1586047908584)
+@@ -0,0 +1,34 @@
++class Queue:
++
++    def __init__(self):
++        self.queue = []
++        self.len_queue = 0
++
++    def push(self, e):
++        self.queue.append(e)
++        self.len_queue += 1
++
++    def pop(self):
++        if not self.empty():
++            self.queue.pop(0)
++            self.len_queue -= 1
++
++    def empty(self):
++        if self.len_queue == 0:
++            return True
++        return False
++
++    def length(self):
++        return self.len_queue
++
++    def front(self):
++        if not self.empty():
++            return self.queue[0]
++        return None
++
++
++q = Queue()
++q.push(1)
++q.push(2)
++q.push(3)
++print(q.front())
+Index: ProjectUni/ListaDuplamente.py
+===================================================================
+--- ProjectUni/ListaDuplamente.py	(revision 0ece8f6c7f104b5ca3d49a4189512f33d1ff53b4)
++++ ProjectUni/Pilha/Pilhas.py	(date 1586047897136)
+@@ -1,0 +1,0 @@
+Index: ProjectUni/Pilha/Stack.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- ProjectUni/Pilha/Stack.py	(date 1586047929489)
++++ ProjectUni/Pilha/Stack.py	(date 1586047929489)
+@@ -0,0 +1,34 @@
++class Stack:
++
++    def __init__(self):
++        self.stack = []
++        self.len_stack = 0
++
++    def push(self, e):
++        self.stack.append(e)
++        self.len_stack += 1
++
++    def pop(self):
++        if not self.empty():
++            self.stack.pop(self.len_stack - 1)
++            self.len_stack -= 1
++
++    def top(self):
++        if not self.empty():
++            return self.stack[-1]
++        return None
++
++    def empty(self):
++        if self.len_stack == 0:
++            return True
++        return False
++
++    def length(self):
++        return self.len_stack
++
++
++s = Stack()
++s.push(1)
++s.push(2)
++s.push(3)
++print(s.top())
+Index: ProjectUni/Fila/FilaEncadeada.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- ProjectUni/Fila/FilaEncadeada.py	(date 1586131618968)
++++ ProjectUni/Fila/FilaEncadeada.py	(date 1586131618968)
+@@ -0,0 +1,45 @@
++class Node:
++    def __init__(self, label):
++        self.label = label
++        self.next = None
++
++    def __str__(self):
++        return str(self.label)
++
++    def getLabel(self):
++        return self.label
++
++    def setLabel(self, label):
++        self.label = label
++
++    def getNext(self):
++        return self.next
++
++    def setNext(self, next):
++        self.next = next
++
++
++class Queue:
++    def __init__(self):
++        self.head = None
++        self.length = 0
++
++    def isEmpty(self):
++        return self.length == 0
++
++    def insert(self, cargo):
++        node = Node(cargo)
++        node.next = None
++        if self.head == None:
++            # if list is empty the new node goes first
++            self.head = node
++        else:
++            # find the last node in the list
++            last = self.head
++            while last.next:
++
++                last = last.next
++            # append the new node
++            last.next = node
++        self.length += 1
++
+Index: ProjectUni/Exc.py
+===================================================================
+--- ProjectUni/Exc.py	(revision 0ece8f6c7f104b5ca3d49a4189512f33d1ff53b4)
++++ ProjectUni/Lista/Exc.py	(date 1585460102675)
+Index: ProjectUni/Lista/ListaDuplamente.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- ProjectUni/Lista/ListaDuplamente.py	(date 1586023225707)
++++ ProjectUni/Lista/ListaDuplamente.py	(date 1586023225707)
+@@ -0,0 +1,82 @@
++class Node(object):
++    def __init__(self, d, next=None, prev=None):
++        self.data = d
++        self.prev = prev
++        self.next = next
++
++    def _getData(self):
++        return self.data
++
++    def _setData(self, d):
++        self.data = d
++
++    def _getPrev(self):
++        return self.prev
++
++    def _setPrev(self, prev):
++        self.prev = prev
++
++    def _getNext(self):
++        return self.next
++
++    def _setNext(self, next):
++        self.next = next
++
++
++class DoublyLikendList(object):
++    def __init__(self, i=None):
++        self.init = i
++        self.size = 0
++
++    # Função para pegar o tamanho
++    def _getSize(self):
++        return self.size
++
++    # Função para adicionar a lista
++    def add(self, d):
++        # Adicionando um novo nó
++        new_node = Node(d, self.init)
++
++        if self.init:
++            self.init._setPrev(new_node)
++        self.init = new_node
++        self.size += 1
++
++    # Função para remover da lista
++    def remove(self, d):
++        this_node = self.init
++
++        while this_node:
++            if this_node._getData() == d:
++                next = this_node._getNext()
++                prev = this_node._getPrev()
++
++                if next:
++                    next._setPrev(prev)
++                if prev:
++                    prev._setNext(next)
++                else:
++                    self.init = this_node
++                self.size -= 1
++                return True  # removendo data
++            else:
++                this_node = this_node._getNext()
++        return False  # data não encontrada
++
++    # Função para buscar os dados
++    def find(self, d):
++        this_node = self.init
++        while this_node:
++            if this_node._getData() == d:
++                return print(d)
++            else:
++                this_node = this_node._getNext()
++        return None
++
++
++myList = DoublyLikendList()
++myList.add(10)
++myList.add(5)
++myList.add(14)
++print(myList.remove(14))
++myList.find(10)
+Index: PycharmProjects/InitPython/Mocks_Stubs.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- PycharmProjects/InitPython/Mocks_Stubs.py	(revision 0ece8f6c7f104b5ca3d49a4189512f33d1ff53b4)
++++ PycharmProjects/InitPython/Mocks_Stubs.py	(date 1584675986672)
+@@ -1,0 +1,71 @@
++# Stubs
++"""Definição:
++    Quando queremos apenas fazer com que determinados objetos tenham
++    comportamentos preestabelecidos,o que precisamos são de stubs."""
++
++
++# Mocks
++"""Definição:
++    Os mocks também podem ter comportamentos preestabelecidos, mas eles
++    também têm expectativas a serem cumpridas."""
++
++import unittest
++from unittest import mock
++
++BUFF_SIZE = 1024
++
++
++def download(response, output):
++    total_downloaded = 0
++    while True:
++        data = response.read(BUFF_SIZE)
++        total_downloaded += len(data)
++        if not data:
++            break
++        output.write(data)
++        print('Downloaded {bytes}'.format(bytes=total_downloaded))
++
++
++class DownloadTest(unittest.TestCase):
++    def test_download_with_know_lenght(self):
++        reponse = mock.MagicMock()
++        reponse.read = mock.MagicMock(side_effect=['Data', 'more data', ''])
++
++        output = mock.MagicMock()
++        output.write = mock.MagicMock()
++
++        download(reponse, output)
++
++        calls = [mock.call(BUFF_SIZE), mock.call(BUFF_SIZE), mock.call(BUFF_SIZE)]
++
++        reponse.read.assert_has_calls(calls)
++
++        calls = [mock.call('Data'), mock.call('more data')]
++
++        output.write.assert_has_calls(calls)
++
++
++# def download_lenght(response, output, length):
++#     times = length // BUFF_SIZE
++#     if length % BUFF_SIZE > 0:
++#         times += 1
++#     for time in range(times):
++#         output.write(response.read(BUFF_SIZE))
++#         print("Downloaded %d" % (((time * BUFF_SIZE)/length)*100))
++#
++#
++# class DownloadTest(unittest.TestCase):
++#     def test_download_with_know_lenght(self):
++#         reponse = mock.MagicMock()
++#         reponse.read = mock.MagicMock(side_effect=['Data']*2)
++#
++#         output = mock.MagicMock()
++#         download_lenght(reponse, output, 1025)
++#
++#         calls = [mock.call(BUFF_SIZE), mock.call(BUFF_SIZE)]
++#
++#         reponse.read.assert_has_calls(calls)
++#
++#         calls = [mock.call('Data'), mock.call('Data')]
++#
++#         output.write.assert_has_calls(calls)
