@@ -1,2 +1,2 @@
-Obs: Descartar a pastas Exercices, ver somente pasta Fila, Lista e Pilha.
+Obs: Descartar a pasta Exercices, ver somente pasta Fila, Lista e Pilha.
 
