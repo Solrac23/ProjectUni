@@ -61,7 +61,8 @@ class BinaryTree:
                     else:
                         data_node._setRight(node)
                     break
-
+    
+    # verifica se está vazio 
     def isEmpty(self):
         if self.root == None:
             return True

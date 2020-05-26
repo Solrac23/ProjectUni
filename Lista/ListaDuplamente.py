@@ -47,7 +47,7 @@ class DoublyLikendList(object):
         this_node = self.init
 
         while this_node:
-            if this_node._getData() == d:
+            if this_node._getData == d:
                 next = this_node._getNext()
                 prev = this_node._getPrev()
 
@@ -67,7 +67,7 @@ class DoublyLikendList(object):
     def find(self, d):
         this_node = self.init
         while this_node:
-            if this_node._getData() == d:
+            if this_node._getData == d:
                 return print(d)
             else:
                 this_node = this_node._getNext()
