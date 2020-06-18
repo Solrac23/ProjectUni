@@ -27,7 +27,7 @@ class Node:
 
 
 class BinaryTree:
-    def __init__(self):
+    def __init__(self, data=None, node=None):
         self.root = None
 
     def _getRoot(self):
@@ -67,6 +67,7 @@ class BinaryTree:
         if self.root == None:
             return True
         return False
+
     # mostra em pré-ordem (raiz-esq-dir)
     def show(self, curr_node):
         if curr_node != None:
@@ -87,10 +88,10 @@ class BinaryTree:
             self.showPostOrder(curr_node._getLeft())
             self.showPostOrder(curr_node._getRight())
             print('%d' % curr_node._getData(), end=' ')
-          
+
+# if __name__ == "__main__":
 
 tree = BinaryTree()
-
 tree.insert(8)
 tree.insert(4)
 tree.insert(9)
@@ -103,27 +104,28 @@ tree.showInOrder(tree._getRoot())
 print('')
 tree.showPostOrder(tree._getRoot())
 
-# tree.insert(15)
-# tree.insert(10)
-# tree.insert(20)
-# tree.insert(5)
-# tree.insert(13)
-# tree.insert(18)
-# tree.show(tree._getRoot())
-# print('')
-# tree.showInOrder(tree._getRoot())
-# print('')
-# tree.showPostOrder(tree._getRoot())
 
-# tree.insert(25)
-# tree.insert(15)
-# tree.insert(35)
-# tree.insert(30)
-# tree.insert(10)
-# tree.insert(20)
-# tree.insert(40)
-# tree.show(tree._getRoot())
-# print('')
-# tree.showInOrder(tree._getRoot())
-# print('')
-# tree.showPostOrder(tree._getRoot())
+    # tree.insert(15)
+    # tree.insert(10)
+    # tree.insert(20)
+    # tree.insert(5)
+    # tree.insert(13)
+    # tree.insert(18)
+    # tree.show(tree._getRoot())
+    # print('')
+    # tree.showInOrder(tree._getRoot())
+    # print('')
+    # tree.showPostOrder(tree._getRoot())
+
+    # tree.insert(25)
+    # tree.insert(15)
+    # tree.insert(35)
+    # tree.insert(30)
+    # tree.insert(10)
+    # tree.insert(20)
+    # tree.insert(40)
+    # tree.show(tree._getRoot())
+    # print('')
+    # tree.showInOrder(tree._getRoot())
+    # print('')
+    # tree.showPostOrder(tree._getRoot())

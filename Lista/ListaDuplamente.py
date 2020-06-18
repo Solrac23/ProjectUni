@@ -1,82 +1,106 @@
 class Node(object):
-    def __init__(self, d, next=None, prev=None):
-        self.data = d
-        self.prev = prev
-        self.next = next
 
-    def _getData(self):
-        return self.data
+	def __init__(self, d, n = None, p = None):
+		self.data = d
+		self.next = n
+		self.prev = p
 
-    def _setData(self, d):
-        self.data = d
+	def get_next(self):
+		return self.next
 
-    def _getPrev(self):
-        return self.prev
+	def set_next(self, n):
+		self.next = n
+		
+	def get_prev(self):
+		return self.prev
 
-    def _setPrev(self, prev):
-        self.prev = prev
+	def set_prev(self, p):
+		self.prev = p
+		
+	def get_data(self):
+		return self.data
 
-    def _getNext(self):
-        return self.next
+	def set_data(self, d):
+		self.data = d
+		
+	def to_string(self):
+		return "Node value: " + str(self.data)
+		
+	def has_next(self):
+		if self.get_next() is None:
+			return False
+		return True
 
-    def _setNext(self, next):
-        self.next = next
+class DoublyLinkedList(object):
+  def __init__(self, r = None):
+    self.root = r
+    self.last = r
+    self.size = 0
+  
+  def getSize(self):
+    # if self.size == " ":
+    #   return str(self.size)
+    # else:
+      return self.size
 
+  def add (self, d):
+    if self.size == 0:
+      self.root = Node(d)
+      self.last = self.root
+    else:
+      new_node = Node(d, self.root)
+      self.root.set_prev(new_node)
+      self.root = new_node
+    self.size += 1
 
-class DoublyLikendList(object):
-    def __init__(self, i=None):
-        self.init = i
-        self.size = 0
+  def remove(self, d):
+    this_node = self.root
+    while this_node is not None:
+      if this_node.get_data() == d:
+        if this_node.get_prev() is not None:
+          if this_node.has_next():	# delete a middle node
+            this_node.get_prev().set_next(this_node.get_next())
+            this_node.get_next().set_prev(this_node.get_prev())
+          else:	# delete last node
+            this_node.get_prev().set_next(None)
+            self.last = this_node.get_prev()
+        else: # delete root node
+          self.root = this_node.get_next()
+          this_node.get_next().set_prev(self.root)
+        self.size -= 1
+        return True     # data removed
+      else:
+        this_node = this_node.get_next()
+    return False  # data not found
 
-    # Função para pegar o tamanho
-    def _getSize(self):
-        return self.size
+  def find(self, d):
+    this_node = self.root
+    while this_node is not None:
+      if this_node.get_data() == d:
+        return d
+      elif this_node.get_next() == self.root:
+        return False
+      else:
+        this_node = this_node.get_next()
+	
+  def printList(self):
+    print("Print List..........")
+    if self.root is None:
+      return
+    this_node = self.root
+    print(this_node.to_string())
+    while this_node.has_next():
+      this_node = this_node.get_next()
+      print(this_node.to_string())
 
-    # Função para adicionar a lista
-    def add(self, d):
-        # Adicionando um novo nó
-        new_node = Node(d, self.init)
+def main():
+  myList = DoublyLinkedList()
+  myList.add("Carlos Eduardo")
+  myList.add("João")
+  myList.add("Pedro")
+  myList.add("Matheus")
+  myList.add("Lucas")
+  print("size="+ str(myList.getSize()))
+  myList.printList()
 
-        if self.init:
-            self.init._setPrev(new_node)
-        self.init = new_node
-        self.size += 1
-
-    # Função para remover da lista
-    def remove(self, d):
-        this_node = self.init
-
-        while this_node:
-            if this_node._getData == d:
-                next = this_node._getNext()
-                prev = this_node._getPrev()
-
-                if next:
-                    next._setPrev(prev)
-                if prev:
-                    prev._setNext(next)
-                else:
-                    self.init = this_node
-                self.size -= 1
-                return True  # removendo data
-            else:
-                this_node = this_node._getNext()
-        return False  # data não encontrada
-
-    # Função para buscar os dados
-    def find(self, d):
-        this_node = self.init
-        while this_node:
-            if this_node._getData == d:
-                return print(d)
-            else:
-                this_node = this_node._getNext()
-        return None
-
-
-myList = DoublyLikendList()
-myList.add(10)
-myList.add(5)
-myList.add(14)
-print(myList.remove(14))
-myList.find(10)
+main()
