@@ -52,36 +52,6 @@ class DoublyLinkedList(object):
       self.root.set_prev(new_node)
       self.root = new_node
     self.size += 1
-
-  def remove(self, d):
-    this_node = self.root
-    while this_node is not None:
-      if this_node.get_data() == d:
-        if this_node.get_prev() is not None:
-          if this_node.has_next():	# delete a middle node
-            this_node.get_prev().set_next(this_node.get_next())
-            this_node.get_next().set_prev(this_node.get_prev())
-          else:	# delete last node
-            this_node.get_prev().set_next(None)
-            self.last = this_node.get_prev()
-        else: # delete root node
-          self.root = this_node.get_next()
-          this_node.get_next().set_prev(self.root)
-        self.size -= 1
-        return True     # data removed
-      else:
-        this_node = this_node.get_next()
-    return False  # data not found
-
-  def find(self, d):
-    this_node = self.root
-    while this_node is not None:
-      if this_node.get_data() == d:
-        return d
-      elif this_node.get_next() == self.root:
-        return False
-      else:
-        this_node = this_node.get_next()
 	
   def printList(self):
     print("Print List..........")
